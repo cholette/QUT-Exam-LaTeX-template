@@ -1,0 +1,46 @@
+\documentclass[12pt]{QUTexam}
+
+% Additional packages specific to this paper
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{lipsum}
+
+\paper{EXXZZZ.YYS}
+
+\begin{document}
+\newsection{A}
+Attempt the question below.
+
+\questionnumber{1}\\
+Consider the system shown in Figure XXXX. Friction on all surfaces is negligible and note that gravity acts as shown in the figure. Moreover, note that the angle $\theta$ is constant. Do the following:
+\begin{enumerate}
+    \item Do Something. \\ \score{13} \\
+\end{enumerate}
+
+\clearpage
+
+\thispagestyle{q_continued_next_page}
+\newsection{B}
+\questionnumber{2}\\
+This is very long question with many parts. If this happens to you, you need to split it manually using the \verb|\thispagestyle| command. \lipsum[1-5]
+\begin{enumerate}
+    \item Do part a
+    \item Do part b
+\end{enumerate}
+
+\clearpage
+\thispagestyle{q_continues}
+\begin{enumerate}[resume]
+    \item This continues on to part c.
+\end{enumerate}
+
+\nomorequestions
+
+\newpage\setcounter{page}{1}
+\renewcommand{\thepage}{(\roman{page})}
+
+This is where the appendices start with a new numbering system.
+
+\end{document}
