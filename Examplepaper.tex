@@ -52,6 +52,256 @@ This is very long question with many parts. If this happens to you, you need to 
 % New command for starting appendices 
 \startappendices
 
-This is where the appendices start with a new numbering system.
+% Here's an example of a lazy way to input appendices: print them to PDF and insert them as an appropriately scaled graphic:
+\begin{figure}[htb]
+    \centering
+    \includegraphics[height=0.9\textheight]{figures/attachments_1.pdf}
+\end{figure}
+
+\clearpage
+
+An alternative is to do it all in \LaTeX, possibly via ``vibe coding'' the conversion from word using Copilot. See below for attachments used on one of my exams:
+
+% Column types used in equation tables
+% L: left-aligned math, wide; R: right-aligned italic description
+\newcolumntype{E}{>{$\displaystyle}m{0.65\linewidth}<{$}}
+\newcolumntype{D}{m{0.33\linewidth}}
+
+% ============================================================
+\section*{Solar Radiation}
+% ============================================================
+ 
+\begin{longtable}{ED}
+  \toprule
+  \textbf{Equation} & \textbf{Description} \\
+  \midrule
+  \noalign{\vspace{2ex}}
+  \endhead
+  \bottomrule
+  \endfoot
+  %
+  
+  G_{sc,\lambda}\!\left(\lambda\ [\mu\text{m}]\right)
+    \approx \frac{8{,}105}{\lambda^5 \!\left[\exp\!\left(\dfrac{2.480}{\lambda}\right) - 1\right]}
+    \quad \left[\tfrac{\text{W}}{\text{m}^2\cdot\mu\text{m}}\right]
+    & {Extraterrestrial spectral solar irradiance (black-body approximation)} \\[10ex]
+  %
+  \delta = 23.45\sin\!\left[\frac{360}{365}(n-81)\right]
+    & {Declination angle} \\[3ex]
+  %
+  \omega = 15\cdot\left(t_{\text{solar}} - 12\right)
+    & {Hour angle} \\[3ex]
+  %
+  t_{\text{solar}} = t_{st} + 4\!\left(L_{st} - L_{loc}\right) + E
+    & {Solar time} \\[3ex]
+  %
+  \begin{aligned}
+    E & = 9.87\sin(2B) - 7.53\cos B - 1.5\sin B \\ B & = \dfrac{360}{364}(n-81)
+  \end{aligned} & {Equation of time} \\[7ex]
+  %
+  \cos\theta_z = \sin\delta\sin\phi + \cos\delta\cos\phi\cos\omega
+  \newline
+  \cos\theta = \cos\theta_z\cos\beta + \sin\theta_z\sin\beta\cos(\gamma_s - \gamma)
+    & {Solar zenith angle and angle of incidence} \\[3ex]
+  %
+  \gamma_s = \operatorname{sign}(\omega)\cdot
+    \left|\cos^{-1}\!\left(\frac{\cos\theta_z\sin\phi - \sin\delta}{\sin\theta_z\cos\phi}\right)\right|
+    & {Solar azimuth angle} \\[3ex]
+  %
+  G_T = G_{DNI}\cos\theta
+    + G_d\cdot\frac{1+\cos\beta}{2}
+    + \rho\,G_{GHI}\cdot\frac{1-\cos\beta}{2}
+    & \multirow{10}{*}{{Solar radiation models}} \\[3ex]
+  %
+  \begin{aligned}
+        G_T  = & \left(G_b + G_d A_i\right)R_b
+    + \\ 
+    & \quad G_d\!\left(1-A_i\right)\!\left(\frac{1+\cos\beta}{2}\right)
+      \!\left[1 + f\sin^3\!\!\left(\frac{\beta}{2}\right)\right] \\
+    & \quad + G_{GHI}\,\rho\!\left(\frac{1-\cos\beta}{2}\right)
+    \end{aligned}
+    & \\[12ex]
+  %
+  G_{GHI} = G_{DNI}\cos\theta_z + G_{DHI}
+    & \\[4pt]
+\end{longtable}
+
+\newpage 
+
+% ============================================================
+\section*{Photovoltaic Solar Power}
+% ============================================================
+ 
+\begin{longtable}{ED}
+  \toprule
+  \textbf{Equation} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  %
+  E = hv = \dfrac{hc}{\lambda}
+    & {Photon energy} \\[3ex]
+  %
+  I_d = I_0\!\left(e^{\frac{q_e V_d}{k_B T}} - 1\right)
+    & {Shockley diode} \\[3ex]
+  %
+  I = I_{SC} - I_d
+  \qquad\qquad
+  V_{OC} = \dfrac{k_B T}{q_e}\ln\!\left(\dfrac{I_{SC}}{I_0} + 1\right)
+    & {PV cell current and open-circuit voltage for simplest equivalent circuit} \\[3ex]
+  %
+  I = I_{sc} - I_d - \dfrac{V}{R_P}
+    & {PV cell current with parallel resistor} \\[3ex]
+  %
+  I = I_{sc} - I_0\!\left(e^{\frac{q_e(V + IR_s)}{k_B T}} - 1\right)
+    - \dfrac{V + IR_s}{R_P}
+    & {PV cell current with series and parallel resistors} \\[3ex]
+  %
+  T_{\text{cell}} = T_{\text{amb}}
+    + \left(\frac{NOCT - 20^\circ}{0.8}\right)\cdot G
+    & {Cell temperature estimate} \\[2ex]
+\end{longtable}
+
+% ============================================================
+\section*{Concentrating Solar Power}
+% ============================================================
+ 
+\begin{longtable}{ED}
+  \toprule
+  \textbf{Equation} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  %
+  C = \dfrac{A_a}{A_r}
+    & {Concentration ratio} \\[3ex]
+  %
+  \eta_{\text{opt}}
+    = \dfrac{\dot{Q}_{rec}}{\dot{Q}_{sun}}
+    = \dfrac{\dot{Q}_{rec}}{DNI \cdot A_a}
+    & {Optical efficiency} \\[3ex]
+  %
+  \eta_{\text{rec}}
+    = \dfrac{\dot{Q}_{HTF}}{\dot{Q}_{rec}}
+    = 1 - \dfrac{\sigma\varepsilon\!\left(T_r^4 - T_{sky}^4\right)
+        + h\!\left(T_r - T_{amb}\right)}
+        {C\,\eta_{\text{opt}}\,DNI}
+    & {Receiver efficiency} \\[3ex]
+  %
+  \eta_{\text{overall}}
+    = \eta_{\text{opt}}\,\eta_{\text{rec}}\,\eta_{\text{pipe}}\,\eta_{pb}
+    = \dfrac{P_{NET}}{A_{\text{aper}}\cdot DNI}
+    & {Overall system efficiency} \\[3ex]
+  %
+  y^2 = 4fx
+    & {Equation of a parabola} \\[3ex]
+  %
+  \beta = \tan^{-1}\!\left[\tan\theta_z \cos(\gamma_s - \gamma)\right]
+  \\[1ex]
+  \gamma =
+    \begin{cases}
+      \gamma' + 90 & \gamma_s - \gamma' \geq 0 \\
+      \gamma' - 90 & \gamma_s - \gamma' < 0
+    \end{cases}
+    & {Parabolic trough aiming equations} \\[3ex]
+  %
+  \eta_{\text{opt}}
+    = \rho_0\,\tau_0\,\alpha_0\,\gamma_0\,K(\theta)
+    & {Optical efficiency of a parabolic trough collector} \\[3ex]
+  %
+  SM = \dfrac{\dot{Q}_{SF,\text{design}}}{\dot{Q}_{PB,\text{design}}}
+    & {Solar multiple} \\[3ex]
+  %
+  \vec{n}
+    = \dfrac{\vec{s} + \vec{r}}{\sqrt{2 + 2\!\left(\vec{s}\cdot\vec{r}\right)}} & \vspace{5ex} \multirow{3}{12em}{{Heliostat aiming equations for a solar tower (refer to Fig. \ref{fig:tower_aiming} below)}}
+  \\[3ex]
+  \vec{r}
+    = \dfrac{(x_a - x_h)\hat{i} + (y_a - y_h)\hat{j} + (z_a - z_h)\hat{k}}
+           {\sqrt{(x_a-x_h)^2 + (y_a-y_h)^2 + (z_a-z_h)^2}} \\[3ex]
+  %
+  \vec{s}
+    = \sin\theta_z\sin(-\gamma_s)\,\hat{i}
+    - \sin\theta_z\cos(-\gamma_s)\,\hat{j}
+    + \cos\theta_z\,\hat{k}
+    & \\[8pt]
+\end{longtable}
+ 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.75\linewidth]{figures/tower_aiming.png}
+  \caption{Heliostat geometry for solar tower aiming.}
+  \label{fig:tower_aiming}
+\end{figure}
+
+% ============================================================
+\section*{Wind Power}
+% ============================================================
+ 
+\begin{longtable}{ED}
+  \toprule
+  \textbf{Equation} & \textbf{Description} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  %
+  pV = nRT
+    & {Ideal gas law} \\[4pt]
+  %
+  F_L = \tfrac{1}{2} C_L A \rho u^2
+    & {Lift force} \\[3ex]
+  %
+  F_D = \tfrac{1}{2} C_D A \rho u^2
+    & {Drag force} \\[3ex]
+  %
+  F(u) = 1 - \exp\!\left(-\left(\dfrac{u}{c}\right)^k\right)
+    & {CDF of a Weibull distribution} \\[3ex]
+  %
+  f(u) = k\dfrac{u^{k-1}}{c^k}\exp\!\left(-\left(\dfrac{u}{c}\right)^k\right)
+    & {PDF of a Weibull distribution} \\[3ex]
+  %
+  F(u) = 1 - \exp\!\left(-\dfrac{\pi}{4}\left(\dfrac{u}{\overline{U}}\right)^2\right)
+    & {CDF of a Rayleigh distribution} \\[3ex]
+  %
+  f(u) = \dfrac{\pi}{2}\left(\dfrac{u}{\overline{U}^2}\right)
+    \exp\!\left(-\dfrac{\pi}{4}\left(\dfrac{u}{\overline{U}}\right)^2\right)
+    & {PDF of a Rayleigh distribution} \\[3ex]
+  %
+  E_w = m\dfrac{v^2}{2}
+    & {Kinetic energy} \\[3ex]
+  %
+  P_w = \dfrac{d}{dt}\!\left(E_w\right)
+    & {Power/energy relation} \\[3ex]
+  %
+  WPD = \dfrac{P_w}{A} = \dfrac{1}{2}\rho u^3
+    & {Wind power density} \\[3ex]
+  %
+  \overline{WPD} = \dfrac{1}{2} K_e \rho \overline{U}^3
+    & {Average wind power density (see Fig. \ref{fig:energy_pattern_factor} below)} \\[3ex]
+  %
+  p = 101.29 - (0.011837)z + (4.793 \times 10^{-7})z^2 \quad [\text{kPa}]
+    & {Pressure variation with altitude} \\[3ex]
+  %
+  \dfrac{\Delta T}{\Delta z} = -0.66\ \dfrac{\text{K}}{100\,\text{m}}
+    & {T variation with height} \\[3ex]
+  %
+  v(z) = v(z_0)\cdot\left(\dfrac{z}{z_0}\right)^a
+    & {Speed variation
+    with height} \\[3ex]
+  %
+  CF = \dfrac{\sum_{i=1}^{8760} E_{el,i}}{\dot{W}_{\text{rated}}\cdot 8760}
+    & {Capacity factor} \\[8pt]
+\end{longtable}
+ 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.75\linewidth]{figures/energy_pattern_factor.png}
+  \caption{Energy pattern factor}
+  \label{fig:energy_pattern_factor}
+\end{figure}
+
+
 
 \end{document}
