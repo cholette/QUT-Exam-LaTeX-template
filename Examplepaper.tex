@@ -1,15 +1,11 @@
 \documentclass[12pt]{QUTexam}
 
 % Additional packages specific to this paper
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{xcolor}
 \usepackage{lipsum}
 \usepackage{url}
 \usepackage{hyperref}
 
-\paper{EXXZZZ.YYS}
+\paper{EXXZZZT1.YYS} % Sets the footer. See exam instructions for footer format
 
 \begin{document}
 \newsection{A}
@@ -44,13 +40,17 @@ This is very long question with many parts. If this happens to you, you need to 
 \clearpage
 \thispagestyle{q_continues}
 \begin{enumerate}[resume]
-    \item This continues on to part c.
+    \item This continues on to part c. \\ \score{10} \\
 \end{enumerate}
 
 \nomorequestions
 
-\newpage\setcounter{page}{1}
-\renewcommand{\thepage}{(\roman{page})}
+% % Old command from the workshop:
+% \newpage\setcounter{page}{1}
+% \renewcommand{\thepage}{(\roman{page})}
+
+% New command for starting appendices 
+\startappendices
 
 This is where the appendices start with a new numbering system.
 

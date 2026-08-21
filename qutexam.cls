@@ -42,7 +42,7 @@
 %% ---------------------------------------------------------------
 \newcommand{\nomorequestions}{%
     \vspace{1.5cm}\centering\textbf{END OF PAPER}%
-    \rfoot{}%
+    \renewcommand{\pto}{}
 }
 
 \newcounter{question}
@@ -53,6 +53,11 @@
 
 \newcommand{\newsection}[1]{%
     \begin{center}\bf{SECTION #1}\end{center}%
+}
+
+\newcommand{\startappendices}{%
+    \newpage\setcounter{page}{1}
+    \renewcommand{\thepage}{(\roman{page})}
 }
 
 %% ---------------------------------------------------------------
