@@ -65,7 +65,7 @@
 %% ---------------------------------------------------------------
 \newcommand{\score}[1]{%
     \vspace{-0.75\baselineskip}%
-    \ifthenelse{#1 < 2}{$ $\hfill(#1 mark)}{$ $\hfill(#1 marks)}%
+    \ifdim #1pt = 1pt $ $\hfill(#1 mark)\else $ $\hfill(#1 marks)\fi % If #1 = 1 print "(1 mark)", else "(#1 marks)" — right-aligned at the margin.
 }
 
 %% ---------------------------------------------------------------
